@@ -1,0 +1,79 @@
+[versions]
+# ================= Core & Build =================
+# AGP 版本：建议使用 8.4.0 或更高稳定版 (8.13.1 不存在，可能是笔误)
+agp = "8.4.0"
+kotlin = "2.0.21"
+# Core KTX：目前稳定版是 1.13.1，1.17.0 尚未发布
+coreKtx = "1.13.1"
+lifecycleRuntimeKtx = "2.8.0"
+
+# ================= Test =================
+junit = "4.13.2"
+junitVersion = "1.1.5" # 修正为存在的版本
+espressoCore = "3.5.1" # 修正为匹配版本
+
+# ================= Legacy Views (即使不用 Compose 也建议保留正确的版本) =================
+appcompat = "1.6.1"
+material = "1.12.0"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
+
+# ================= Compose & UI =================
+# Compose BOM (Bill of Materials)
+composeBom = "2024.05.00"
+activityCompose = "1.9.0"
+
+# ================= Architecture =================
+hilt = "2.51.1"
+navigationCompose = "2.7.7"
+
+# ================= Baidu Map =================
+# 对应你 build.gradle 中使用的 Map-AllNavi 版本
+baiduMapNavi = "7.6.4"
+baiduLoc = "9.6.6"
+
+[libraries]
+# Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+# Legacy (View System)
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# Compose
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+# 下面这些库不带 version，因为版本由 BOM 管理
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "navigationCompose" }
+
+# Baidu Map SDK
+# 注意：这里修改为 AllNavi 包，以配合你 build.gradle 中的配置
+baidu-map-sdk-navi = { group = "com.baidu.lbsyun", name = "BaiduMapSDK_Map-AllNavi", version.ref = "baiduMapNavi" }
+baidu-loc-sdk = { group = "com.baidu.lbsyun", name = "BaiduMapSDK_Location_All", version.ref = "baiduLoc" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+# 修改点：将 jetbrains-kotlin-android 改为简单的 kotlin-android
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+# 修改点：保持标准命名
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
