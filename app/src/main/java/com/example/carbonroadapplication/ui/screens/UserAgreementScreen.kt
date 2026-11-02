@@ -97,7 +97,7 @@ fun UserAgreementScreen(navController: NavController) {
             AgreementCard(
                 icon = Icons.Rounded.Email,
                 title = "6. 联系与反馈",
-                content = "我们重视每一位用户的声音。如有任何疑问或建议，欢迎随时联系开发者邮箱：1156852317@qq.com"
+                content = "我们重视每一位用户的声音。如有任何疑问或建议，欢迎随时联系开发者邮箱：songjie2027@126.com"
             )
 
             Spacer(modifier = Modifier.height(40.dp))
