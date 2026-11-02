@@ -122,7 +122,7 @@ fun AboutScreen(navController: NavController) {
                             .clickable {
                                 try {
                                     val intent = Intent(Intent.ACTION_SENDTO).apply {
-                                        data = Uri.parse("mailto:1156852317@qq.com")
+                                        data = Uri.parse("mailto:songjie2027@126.com")
                                         putExtra(Intent.EXTRA_SUBJECT, "森途App - 用户反馈")
                                     }
                                     context.startActivity(Intent.createChooser(intent, "发送邮件"))
@@ -164,7 +164,7 @@ fun AboutScreen(navController: NavController) {
                                     color = Color.Gray
                                 )
                                 Text(
-                                    text = "1156852317@qq.com",
+                                    text = "songjie2027@126.com",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color(0xFF2E7D32) // 强制深绿色
